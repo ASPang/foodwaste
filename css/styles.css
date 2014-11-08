@@ -1,0 +1,56 @@
+/*** General Styles ***/
+.row {
+    text-align: center;
+    vertical-align: middle;
+    margin-bottom: 0.5em;
+}
+
+
+/*** Header Style ***/
+#logo {
+    width: 300px;
+    height: auto;
+}
+
+.orbit-container {
+    height: 400px;
+}
+
+.orbit-caption h1, .orbit-caption h3 {
+    color: #fff;
+}
+
+.navBar .button {
+    color: #149954;
+    background-color: #fff;
+}
+
+/*Graph Size*/
+.orbit-container #visualization {
+    height: 400px;
+    width: auto;
+}
+
+
+/*** Homepage Info Style ***/
+.infoRow {
+    /*height: 800px;
+    width: 100%;
+    */
+    
+    
+    /*background-color: yellow;*/
+}
+
+#enterInfo {
+    height: 400px;
+    width: 100%;
+
+    text-align: center;
+    vertical-align: middle;
+    background-image:  url("../img/sam_1309.jpg");
+}
+
+#enterInfo h1{
+    margin-top: 15%;
+}
