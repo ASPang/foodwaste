@@ -39,6 +39,11 @@
 .footerSec a {
     color: #149954;
     float: left;
+    text-decoration: none;
+}
+
+.footerSec a:hover {
+    color: #fff;
 }
 
 .footerSec h5 {
