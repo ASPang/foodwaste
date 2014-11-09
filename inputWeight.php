@@ -112,8 +112,45 @@
                             $row = mysqli_fetch_assoc($result);
                         }
                         
-            echo end($datalist);
-                        
+            $endPt=end($datalist);
+            $percent= $endPt[5]/$endPt[4]*100;
+            
+           
+            $query = "SELECT InitialWeight, WasteWeight FROM  MagicBin WHERE  Date = curdate()";
+                        $avResult = mysqli_query($conn, $query);
+                        $avRow = mysqli_fetch_assoc($avResult);
+
+$datelist=array();
+                        while ($avRow != null) {
+                            $line = array();
+                            foreach ($avRow as $cell) {
+                              //  echo $cell." ! ";
+
+                                array_push($line, $cell);
+                            }
+                            array_push($datelist, $line);
+                            unset($line);
+                            $avRow = mysqli_fetch_assoc($avResult);
+                        }
+                       
+$totalInitial=0;
+$totalWaste=0;
+foreach($datelist as $x){
+$totalInitial+= $x[0];
+$totalWaste+= $x[1];
+$avg= $totalWaste/$totalInitial * 100;
+
+    
+}
+// Determine if the user is below or above the average
+    if ($percent <= $avg) {
+   $src= "img/ThumbsUp.png";
+    }
+    else{
+    $src = "img/ThumbsDown.png";
+}
+            
+                                    
        ?>
       
       
@@ -121,39 +158,76 @@
       <div class="row">
          <div class="large-3 small-6 columns">
             <div class="imgSize">
-               <img id="pastResult1" src="http://placehold.it/500x500&text=Thumbnail">
+            
+               <?php echo '<img src="' . $src . '" />'; ?>
             </div>
             <div class="panel">
-               <p>Description</p>
+               <p><?php echo round($percent,2) ?>%</p>
             </div>
          </div><!--columns-->
 
+<?php
+            $endPt=prev($datalist);
+            $percent= $endPt[5]/$endPt[4]*100;
+            // Determine if the user is below or above the average
+    if ($percent <= $avg) {
+     $src= "img/ThumbsUp.png";
+    }
+    else{
+    $src = "\"img/ThumbsDown.png\"";
+}
+          ?>
 
          <div class="large-3 small-6 columns">
             <div class="">
-               <img id ="pastResult1" src="http://placehold.it/500x500&text=Thumbnail">
+               <?php echo '<img src="' . $src . '" />'; ?>
             </div>
             <div class="panel">
-               <p>Description</p>
-            </div>
-         </div><!--columns-->
-
-         <div class="large-3 small-6 columns">
-            <div class="imgSize">
-               <img id ="pastResult1" src="http://placehold.it/500x500&text=Thumbnail">
-            </div>
-            <div class="panel">
-               <p>Description</p>
+               <p><?php echo round($percent,2) ?>%</p>
             </div>
          </div><!--columns-->
 
 
+<?php
+            $endPt=prev($datalist);
+            $percent= $endPt[5]/$endPt[4]*100;
+            // Determine if the user is below or above the average
+    if ($percent <= $avg) {
+    $src= "img/ThumbsUp.png";
+    }
+    else{
+    $src = "img/ThumbsDown.png";
+    }
+          ?>
+
          <div class="large-3 small-6 columns">
             <div class="imgSize">
-               <img id ="pastResult1" src="http://placehold.it/500x500&text=Thumbnail">
+               <?php echo '<img src="' . $src . '" />'; ?>
             </div>
             <div class="panel">
-               <p>Description</p>
+               <p><?php echo round($percent,2) ?>%</p>
+            </div>
+         </div><!--columns-->
+
+
+<?php
+            $endPt=prev($datalist);
+            $percent= $endPt[5]/$endPt[4]*100;
+            // Determine if the user is below or above the average
+    if ($percent <= $avg) {
+      $src= "img/ThumbsUp.png";
+    }
+    else{
+    $src = "img/ThumbsDown.png";
+}
+          ?>
+
+         <div class="large-3 small-6 columns">
+            <div class="imgSize">
+               <?php echo '<img src="' . $src . '" />'; ?>
+            </div>
+            <div class="panel">
+               <p><?php echo round($percent,2) ?>%</p>
             </div>
          </div><!--columns-->
       </div><!--row-->
