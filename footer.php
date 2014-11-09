@@ -4,8 +4,8 @@
         <!-- Site Links -->
         <div class="large-4 columns">
             <h5>Site Links</h5>
-            <a href="index.html">Home</a><br/>
-            <a href="inputWeight.html">Input Waste</a><br/>
+            <a href="index.php">Home</a><br/>
+            <a href="inputWeight.php">Input Waste</a><br/>
             <a href="#">View Data</a><br/>
             <a href="#">Download</a><br/>
         </div>
@@ -18,7 +18,7 @@
         <!-- Social Media -->
         <div class="large-4 columns">
             <div class="row">
-                <img id="footerLogo" src="img/magicBinLogo.png" alt="Magic Bin Logo" />
+                <img id="footerLogo" src="img/magicBinLogo.PNG" alt="Magic Bin Logo" />
             </div>
 
             <div class="row socialSec">

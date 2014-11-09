@@ -1,4 +1,3 @@
-
 <!doctype html>
 <!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
 <html class="no-js" lang="en" data-useragent="Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)">
@@ -20,7 +19,7 @@
    
    <body>
       <!-- Header Section  -->
-     <?php include file("header.php") ?>
+     <?php include 'header.php' ?>
 
       <br>
 
@@ -44,7 +43,7 @@
                   reduction goals and see how much waste you're saving as well as money.
                   <br> 
                   <br> 
-                  Note: Results are entered in pounds.
+                  Note: Results are entered in grams.
                </h5>
             </div><!--panel-->
          </div><!--columns-->
@@ -84,7 +83,41 @@
          </div><!--columns-->
       </div>
       
-      <!-- Other Individual Information Data -->      
+      <!-- Other Individual Information Data --> 
+      <?php
+       $datalist = array();
+
+
+// Create connection
+       $conn = new mysqli("localhost", "idk2008_fwAdmin", "food123", "idk2008_foodwaste");
+
+// Check connection
+       if ($conn->connect_error) {
+           die("Connection failed: " . $conn->connect_error);
+       }
+                        $query = "SELECT * FROM MagicBin ";
+                        $result = mysqli_query($conn, $query);
+                        $row = mysqli_fetch_assoc($result);
+
+                        while ($row != null) {
+                            $line = array();
+                            foreach ($row as $cell) {
+                                //echo $cell;
+
+                                array_push($line, $cell);
+                            }
+                            array_push($datalist, $line);
+                            //print_r( $line);
+                            unset($line);
+                            $row = mysqli_fetch_assoc($result);
+                        }
+                        
+            echo end($datalist);
+                        
+       ?>
+      
+      
+           
       <div class="row">
          <div class="large-3 small-6 columns">
             <div class="imgSize">
@@ -126,7 +159,7 @@
       </div><!--row-->
 
       <!-- Footer -->
-      <?php include file("footer.php") ?>
+      <?php include 'footer.php' ?>
 
 
       <!-- JavaScripts -->
