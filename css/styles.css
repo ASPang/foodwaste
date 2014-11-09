@@ -30,6 +30,50 @@
     background-color: #fff;
 }
 
+/*** Footer Style***/
+.footerSec {
+    background-color: #333;
+    padding-top: 2em;   
+}
+
+.footerSec a {
+    color: #149954;
+    float: left;
+}
+
+.footerSec h5 {
+    color: #fff; 
+    text-align: left;
+}
+
+.footerTop .columns{
+    padding-left: 5em;
+}
+
+.footerTop {
+    margin-top: 1em;
+    margin-bottom: 3em;
+}
+
+#footerLogo {
+    width: 150px;
+    height: auto;
+    float: left;
+}
+
+.socialSec img{
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+}
+
+.socialSec h5 {
+    margin-top: 2em;
+}
+
+#copyRight {
+    color: #fff;
+}
+
 /*Graph Size*/
 .orbit-container #visualization {
     height: 500px;
@@ -66,3 +110,15 @@
 #userResultSection img{
     height: 523px;
 }
+
+.imgSize {
+    height: 220px;
+    width: 220px;
+    overflow: hidden;
+}
+
+.imgSize img {
+    height: 220px;
+    width: 220px;
+}
+
