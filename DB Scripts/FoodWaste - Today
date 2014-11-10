@@ -1,0 +1,11 @@
+INSERT INTO idk2008_foodwaste.MagicBin(Date, Time, Location, InitialWeight, WasteWeight) VALUES ('2014-11-09', '12:56:00', 'Creelman', 300, 58);
+INSERT INTO idk2008_foodwaste.MagicBin(Date, Time, Location, InitialWeight, WasteWeight) VALUES ('2014-11-09', '16:40:00', 'Creelman', 358, 20);
+INSERT INTO idk2008_foodwaste.MagicBin(Date, Time, Location, InitialWeight, WasteWeight) VALUES ('2014-11-09', '08:30:00', 'Creelman', 250, 0);
+INSERT INTO idk2008_foodwaste.MagicBin(Date, Time, Location, InitialWeight, WasteWeight) VALUES ('2014-11-09', '08:35:00', 'Creelman', 321, 150);
+INSERT INTO idk2008_foodwaste.MagicBin(Date, Time, Location, InitialWeight, WasteWeight) VALUES ('2014-11-09', '12:45:00', 'Creelman', 288, 39);
+INSERT INTO idk2008_foodwaste.MagicBin(Date, Time, Location, InitialWeight, WasteWeight) VALUES ('2014-11-09', '05:55:00', 'Creelman', 403, 28);
+INSERT INTO idk2008_foodwaste.MagicBin(Date, Time, Location, InitialWeight, WasteWeight) VALUES ('2014-11-09', '05:55:00', 'Creelman', 403, 28);
+INSERT INTO idk2008_foodwaste.MagicBin(Date, Time, Location, InitialWeight, WasteWeight) VALUES ('2014-11-09', '17:55:00', 'Creelman', 403, 28);
+INSERT INTO idk2008_foodwaste.MagicBin(Date, Time, Location, InitialWeight, WasteWeight) VALUES ('2014-11-09', '16:55:00', 'Creelman', 369, 93);
+INSERT INTO idk2008_foodwaste.MagicBin(Date, Time, Location, InitialWeight, WasteWeight) VALUES ('2014-11-09', '16:55:00', 'Creelman', 369, 93);
+INSERT INTO idk2008_foodwaste.MagicBin(Date, Time, Location, InitialWeight, WasteWeight) VALUES ('2014-11-09', '18:00:00', 'Creelman', 200, 11);

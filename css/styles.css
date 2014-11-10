@@ -127,3 +127,11 @@
     width: 220px;
 }
 
+#dayResult, #weekResult, #monthResult {
+    height: 500px;
+}
+
+.size {
+    height: 220px;
+    width: 220px;
+}

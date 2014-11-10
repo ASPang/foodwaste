@@ -23,16 +23,12 @@
         <?php include 'header.php' ?>
 
         <div class="row">
- 
-     
-
                 <aside class="large-3 columns">
                     <h5>Data</h5>
                     <ul class="side-nav">
-                        <li><a href="#">Today</a></li>
-                        <li><a href="#">Weekly</a></li>
-                        <li><a href="#">Monthly</a></li>
-                        <li><a href="#">Number of Wasters</a></li>
+                        <li><a href="#dayResult">Today</a></li>
+                        <li><a href="#weekResult">Weekly</a></li>
+                        <li><a href="#monthResult">Monthly</a></li>
                     </ul>
                 </aside>
 
@@ -46,9 +42,6 @@
                 <div class="row">
                     <div id="monthResult"></div>
                 </div>
-                <div class="row">
-                    <div id="wasterResult"></div>
-                </div>
             </div>
         </div>
 
@@ -61,7 +54,7 @@
             $datalist = array();
             
             // Create connection
-            $conn = new mysqli("localhost", "root", "", "idk2008_foodwaste");
+            $conn = new mysqli("localhost", "idk2008_fwAdmin", "food123", "idk2008_foodwaste");
 
             // Check connection
             if ($conn->connect_error) {
@@ -110,12 +103,12 @@
 
             //Create Java/php variables
             var dataList = <?php echo json_encode($datalist) ?>;
-            //console.log(dataList);
             drawWeekData(dataList);
 
 
         </script>
         
+        <!-- Day Data Query -->
         <?php unset($dataList) ?>
         
         <?php
@@ -149,8 +142,45 @@
             //Create Java/php variables
             
             var dataList = <?php echo json_encode($dataListDay) ?>;
-            console.log(dataList);
             drawTodayData(dataList);
         </script>
+        
+        <!-- Month Data Query -->
+        <?php unset($dataList) ?>
+        
+        <?php
+            $dataListMonth = array();
+            
+            //Script to get data
+            $query = "SELECT * FROM MagicBin 
+                WHERE YEAR(date) = YEAR(CURDATE()) 
+                ORDER BY Date ASC  ";
+            $result = mysqli_query($conn, $query);
+            $row = mysqli_fetch_assoc($result);
+
+            while ($row != null) {
+                $line = array();
+                foreach ($row as $cell) {
+                    array_push($line, $cell);
+                }
+                array_push($dataListMonth, $line);
+
+                unset($line);
+                $row = mysqli_fetch_assoc($result);
+            }
+        ?>
+        
+        <script>
+            $(document).foundation();
+
+            var doc = document.documentElement;
+            doc.setAttribute('data-useragent', navigator.userAgent);
+
+            //Create Java/php variables
+            
+            var dataList = <?php echo json_encode($dataListMonth) ?>;
+            drawMonthData(dataList);
+        </script>
+        
     </body>
 </html>

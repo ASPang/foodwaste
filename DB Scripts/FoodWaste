@@ -1,0 +1,20 @@
+CREATE TABLE idk2008_foodwaste.MagicBin (
+	Entry int(10) NOT NULL auto_increment,
+	Date date,
+	Time time,
+	Location tinytext,
+	InitialWeight double,
+	WasteWeight double,
+	PRIMARY KEY (Entry)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO idk2008_foodwaste.MagicBin(Entry, Date, Time, Location, InitialWeight, WasteWeight) VALUES (1, '2014-11-03', '12:55:00', 'Creelman', 300, 58);
+INSERT INTO idk2008_foodwaste.MagicBin(Entry, Date, Time, Location, InitialWeight, WasteWeight) VALUES (2, '2014-11-03', '16:40:00', 'Creelman', 358, 20);
+INSERT INTO idk2008_foodwaste.MagicBin(Entry, Date, Time, Location, InitialWeight, WasteWeight) VALUES (3, '2014-11-04', '08:30:00', 'Creelman', 250, 0);
+INSERT INTO idk2008_foodwaste.MagicBin(Entry, Date, Time, Location, InitialWeight, WasteWeight) VALUES (4, '2014-11-04', '08:35:00', 'Creelman', 321, 150);
+INSERT INTO idk2008_foodwaste.MagicBin(Entry, Date, Time, Location, InitialWeight, WasteWeight) VALUES (5, '2014-11-04', '12:45:00', 'Creelman', 288, 39);
+INSERT INTO idk2008_foodwaste.MagicBin(Entry, Date, Time, Location, InitialWeight, WasteWeight) VALUES (6, '2014-11-04', '05:55:00', 'Creelman', 403, 28);
+INSERT INTO idk2008_foodwaste.MagicBin(Entry, Date, Time, Location, InitialWeight, WasteWeight) VALUES (7, '2014-11-05', '05:55:00', 'Creelman', 403, 28);
+INSERT INTO idk2008_foodwaste.MagicBin(Entry, Date, Time, Location, InitialWeight, WasteWeight) VALUES (8, '2014-11-05', '17:55:00', 'Creelman', 403, 28);
+INSERT INTO idk2008_foodwaste.MagicBin(Entry, Date, Time, Location, InitialWeight, WasteWeight) VALUES (9, '2014-11-05', '16:55:00', 'Creelman', 369, 93);
+INSERT INTO idk2008_foodwaste.MagicBin(Entry, Date, Time, Location, InitialWeight, WasteWeight) VALUES (10, '2014-11-06', '16:55:00', 'Creelman', 369, 93);
+INSERT INTO idk2008_foodwaste.MagicBin(Entry, Date, Time, Location, InitialWeight, WasteWeight) VALUES (11, '2014-11-07', '18:00:00', 'Creelman', 200, 11);

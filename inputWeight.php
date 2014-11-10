@@ -19,15 +19,71 @@
    
    <body>
       <!-- Header Section  -->
-     <?php include 'header.php' ?>
-
       <br>
+     <?php include 'header.php'; 
+
+  
+// Create connection
+       $conn = new mysqli("localhost", "idk2008_fwAdmin", "food123", "idk2008_foodwaste");
+
+// Check connection
+       if ($conn->connect_error) {
+           die("Connection failed: " . $conn->connect_error);
+       }
+       
+                   $query = "SELECT InitialWeight, WasteWeight FROM  MagicBin WHERE  Date = curdate()";
+                        $avResult = mysqli_query($conn, $query);
+                        $avRow = mysqli_fetch_assoc($avResult);
+
+$datelist=array();
+                        while ($avRow != null) {
+                            $line = array();
+                            foreach ($avRow as $cell) {
+                              //  echo $cell." ! ";
+
+                                array_push($line, $cell);
+                            }
+                            array_push($datelist, $line);
+                            unset($line);
+                            $avRow = mysqli_fetch_assoc($avResult);
+                        }
+                       
+$totalInitial=0;
+$totalWaste=0;
+foreach($datelist as $x){
+$totalInitial+= $x[0];
+$totalWaste+= $x[1];
+}
+$avg= $totalWaste/$totalInitial * 100;
+ 
+ 
+$start = $_POST['startWeight'];
+$end = $_POST['endWeight'];
+if(preg_match('/^\d+$/',$start)&& preg_match('/^\d+$/',$end)){
+    $sqlQuery = "INSERT INTO `magicbin`(`Entry`, `Date`, `Time`, `Location`, `InitialWeight`, `WasteWeight`) VALUES ('',curdate(),curtime(),null," . $start . "," . $end . ")"; 
+    mysqli_query($conn, $sqlQuery);
+    
+}
+ 
+ if ($start != 0) {
+ $percent= $end/$start * 100;
+ }
+ 
+
+// Determine if the user is below or above the average
+    if ($percent <= $avg) {
+   $src= "img/ThumbsUp.png";
+    }
+    else{
+    $src = "img/ThumbsDown.png";
+}
+  ?>
 
       <!-- User Input -->
       <div class="row">
          <!-- Individual Graph Result -->
          <div id="userResultSection" class="large-6 columns">
-            <img id="thumbImg" src="img/blankImg.png" />
+            <?php echo '<img src="' . $src . '" />'; ?>
             <!--<img src="http://placehold.it/500x500&text=Image"><br>-->
             <!-- Google Map -->
             <div id="individualResult"></div>
@@ -48,24 +104,27 @@
             </div><!--panel-->
          </div><!--columns-->
 
+  
+
          <div class="large-6 columns">
             <div class="radius panel">
-               <form>
+               <form action="inputWeight.php" method="POST">
                   <div class="row collapse">
                      <h4 class="hide-for-small">Add Start or End Weight<hr/></h4>
                      
                      <div class="large-12 small-12 columns">
-                        <input id = searchBox placeholder="Start Weight (grams)" type="text"/>
+                        <input id="startWeight" name="startWeight" placeholder="Start Weight (grams)" type="text"/>
                      </div><!--columns-->
 
                      <div class="large-12 small-12 columns">
-                        <input id = searchBox placeholder="End Weight (grams)" type="text"/>
+                        <input id="wasteWeight" name="endWeight" placeholder="End Weight (grams)" type="text"/>
                      </div><!--columns-->
                   </div><!--columns-->
                   
                   <!-- Add button -->
                   <div class="row collapse">
-                        <a id = search href="#" class="postfix button expand" onclick='individualResult()'>Add</a>
+                        <!--<a id="SubmitButton" href="#" class="postfix button expand" onclick='individualResult()'>Add</a>-->
+                        <input type="submit" value="Submit">
                   </div><!--row-->
                   
                </form><!--forms-->
@@ -88,13 +147,7 @@
        $datalist = array();
 
 
-// Create connection
-       $conn = new mysqli("localhost", "idk2008_fwAdmin", "food123", "idk2008_foodwaste");
 
-// Check connection
-       if ($conn->connect_error) {
-           die("Connection failed: " . $conn->connect_error);
-       }
                         $query = "SELECT * FROM MagicBin ";
                         $result = mysqli_query($conn, $query);
                         $row = mysqli_fetch_assoc($result);
@@ -116,32 +169,10 @@
             $percent= $endPt[5]/$endPt[4]*100;
             
            
-            $query = "SELECT InitialWeight, WasteWeight FROM  MagicBin WHERE  Date = curdate()";
-                        $avResult = mysqli_query($conn, $query);
-                        $avRow = mysqli_fetch_assoc($avResult);
-
-$datelist=array();
-                        while ($avRow != null) {
-                            $line = array();
-                            foreach ($avRow as $cell) {
-                              //  echo $cell." ! ";
-
-                                array_push($line, $cell);
-                            }
-                            array_push($datelist, $line);
-                            unset($line);
-                            $avRow = mysqli_fetch_assoc($avResult);
-                        }
-                       
-$totalInitial=0;
-$totalWaste=0;
-foreach($datelist as $x){
-$totalInitial+= $x[0];
-$totalWaste+= $x[1];
-$avg= $totalWaste/$totalInitial * 100;
+ 
 
     
-}
+
 // Determine if the user is below or above the average
     if ($percent <= $avg) {
    $src= "img/ThumbsUp.png";
@@ -174,12 +205,12 @@ $avg= $totalWaste/$totalInitial * 100;
      $src= "img/ThumbsUp.png";
     }
     else{
-    $src = "\"img/ThumbsDown.png\"";
+    $src = "img/ThumbsDown.png";
 }
           ?>
 
          <div class="large-3 small-6 columns">
-            <div class="">
+            <div class="imgSize">
                <?php echo '<img src="' . $src . '" />'; ?>
             </div>
             <div class="panel">
@@ -257,5 +288,29 @@ $avg= $totalWaste/$totalInitial * 100;
       <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
       <script src="js/graph.js"></script>
+      <script src="js/inputWeight.js"></script>
+      
+<script>      
+      function individualResult() {
+    var start = document.getElementById('startWeight').value;
+    var end = document.getElementById('startWeight').value;
+    var location = null;
+    var date = null;
+    var time = null;
+    var dateTime = new Date();
+    
+    date = dateTime.getDate();
+    console.log(date);
+    
+    console.log(dateTime);
+    console.log(dateTime.Length);
+    time = dateTime.substring(dateTime.length-8, dateTime.length-1);
+    console.log(time);
+    
+    var sqlQuery = "INSERT INTO `magicbin`(`Entry`, `Date`, `Time`, `Location`, `InitialWeight`, `WasteWeight`) VALUES ('',curdate(),curtime(),null," + start + "," + end + ") ";
+    
+    
+}
+</script>
    </body>
 </html>

@@ -34,7 +34,7 @@
 
 
 // Create connection
-                        $conn = new mysqli("localhost", "root", "", "idk2008_foodwaste");
+                        $conn = new mysqli("localhost", "idk2008_fwAdmin", "food123", "idk2008_foodwaste");
 
 // Check connection
                         if ($conn->connect_error) {
@@ -62,7 +62,7 @@
                         <div id="visualization"></div>
                         <div class="orbit-caption">
                             <h1>Current Trends</h1>
-                            <h3>As of today Creelman's waste has doubled</h3>
+                            <h3>As of today Creelman's waste has gone up</h3>
                         </div>
                     </li>
                     <li class="active">
@@ -70,14 +70,14 @@
                             <img src="img/foodwaste21.jpg" alt="slide 1" />
                         </div>
                         <div class="orbit-caption">
-                            <h1>Number of Food Wasters</h1>
+                            <h1>Food Wasters</h1>
                             <h3>If you can't finish it then save it!</h3>
                         </div>
 
                     </li>
                     <li>
                         <div class="crop">
-                            <img src="img/foodwaste21.jpg" alt="slide 1" />
+                            <img src="img/sam_1309.jpg" alt="slide 1" />
                         </div>
                         <div class="orbit-caption">
                             <h1>Weekly Stat</h1>
@@ -92,14 +92,14 @@
             <div id="enterInfo" class="large-12 columns">
                 <h1>Take a Stand!</h1>
                 <h3>Help the University with reducing the amount of food waste.</h3>
-                <a href="#">Read More</a>
+                <a href="inputWeight.php">Enter Food Waste</a>
             </div><!--columns-->
         </div><!--row-->
 
         <!-- Three Bars at the bottom -->
         <div class="row">
             <div class="large-4 columns">
-                <img src="http://placehold.it/400x300&text=[img]"/>
+                <img src="http://files.site-fusion.co.uk/webfusion118501/image/newsicons.jpg" class="size"/>
                 <h4>Get the Latest Information</h4>
                 <p>
                     Curious about the amount of food wasted?  
@@ -107,17 +107,17 @@
             </div>
 
             <div class="large-4 columns">
-                <img src="http://placehold.it/400x300&text=[img]"/>
+                <img src="http://www.mecmedical.com/wp-content/themes/coda/images/download-icon.gif" class="size"/>
                 <h4>Download the Data Set</h4>
                 <p>
-                    The raw data set of food wasted can be found here.
+                    The raw data set of food wasted can be found here.  To Be Continued.
                 </p>
             </div>
 
             <div class="large-4 columns">
-                <img src="http://placehold.it/400x300&text=[img]"/>
-                <h4>This is a content section.</h4>
-                <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
+                <img src="http://www.perfectgreen.com.hk/img/photo-foodwaste10.jpg" class="size"/>
+                <h4>Educational Information</h4>
+                <p>Steps for an individual to reduce the amount of food waste.</p>
             </div>
 
         </div>
@@ -134,7 +134,7 @@
                             <p>We'd love to hear from you, you attractive person you.</p>
                         </div>
                         <div class="large-3 columns">
-                            <a href="#" class="radius button right">Contact Us</a>
+                            <a href="contact.php" class="radius button right">Contact Us</a>
                         </div>
                     </div>
                 </div>
